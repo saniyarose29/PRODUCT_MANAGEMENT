@@ -1,0 +1,249 @@
+{% extends 'products/base.html' %}
+
+{% block title %}
+{{ page_title }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h2>
+                {{ page_title }}
+            </h2>
+
+            <a href="{% url 'product_list' %}" class="btn btn-secondary">
+                Back to Products
+            </a>
+
+        </div>
+
+
+        <div class="card shadow-sm">
+
+            <div class="card-body p-4">
+
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+
+                    <!-- Non-field errors -->
+
+                    {% if form.non_field_errors %}
+
+                    <div class="alert alert-danger">
+
+                        {{ form.non_field_errors }}
+
+                    </div>
+
+                    {% endif %}
+
+
+                    <!-- Product Name -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Product Name
+                        </label>
+
+                        {{ form.name }}
+
+                        {% for error in form.name.errors %}
+
+                        <div class="text-danger small mt-1">
+                            {{ error }}
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- SKU -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            SKU
+                        </label>
+
+                        {{ form.sku }}
+
+                        {% for error in form.sku.errors %}
+
+                        <div class="text-danger small mt-1">
+                            {{ error }}
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- Category -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Category
+                        </label>
+
+                        {{ form.category }}
+
+                        {% for error in form.category.errors %}
+
+                        <div class="text-danger small mt-1">
+                            {{ error }}
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- Price -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Price
+                        </label>
+
+                        {{ form.price }}
+
+                        {% for error in form.price.errors %}
+
+                        <div class="text-danger small mt-1">
+                            {{ error }}
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- Stock -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Stock Quantity
+                        </label>
+
+                        {{ form.stock }}
+
+                        {% for error in form.stock.errors %}
+
+                        <div class="text-danger small mt-1">
+                            {{ error }}
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- Image URL -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Product Image URL
+                        </label>
+
+                        {{ form.image }}
+
+                        <div class="form-text">
+                            Paste a direct image URL.
+                        </div>
+
+                        {% for error in form.image.errors %}
+
+                        <div class="text-danger small mt-1">
+                            {{ error }}
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- Description -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Description
+                        </label>
+
+                        {{ form.description }}
+
+                        {% for error in form.description.errors %}
+
+                        <div class="text-danger small mt-1">
+                            {{ error }}
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- Status -->
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+                            Status
+                        </label>
+
+                        {{ form.status }}
+
+                        {% for error in form.status.errors %}
+
+                        <div class="text-danger small mt-1">
+                            {{ error }}
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- Buttons -->
+
+                    <div class="d-flex gap-2">
+
+                        <button type="submit" class="btn btn-primary">
+                            {{ button_text }}
+                        </button>
+
+
+                        <a href="{% url 'product_list' %}" class="btn btn-secondary">
+                            Cancel
+                        </a>
+
+                    </div>
+
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
